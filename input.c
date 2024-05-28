@@ -2,6 +2,7 @@
 
 int obtenerRespuestaDeTecladoTemporizado(char* respuesta,double *tiempoRespuesta,int tiempoLimite)
 {
+    *respuesta='-';
     clock_t start_time=clock();
     *tiempoRespuesta = (double)(clock() - start_time) / CLOCKS_PER_SEC;
     while ( *tiempoRespuesta<tiempoLimite && !esOpcionValida(*respuesta))
@@ -11,7 +12,5 @@ int obtenerRespuestaDeTecladoTemporizado(char* respuesta,double *tiempoRespuesta
             *respuesta = toupper(_getch());
         *tiempoRespuesta = (double)(clock() - start_time) / CLOCKS_PER_SEC;
     }
-    if(*tiempoRespuesta>=tiempoLimite)
-        *respuesta='-';
     return TODO_OK;
 }
